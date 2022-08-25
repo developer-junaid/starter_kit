@@ -11,7 +11,9 @@ function tokens(n) {
   return web3.utils.toWei(n, "ether")
 }
 
-contract("EthSwap", (accounts) => {
+// Deployer: first ganache account
+// Investor: token purchaser
+contract("EthSwap", ([deployer, investor]) => {
   // Tests for EthSwap contract
   let token, ethSwap
 
@@ -37,8 +39,35 @@ contract("EthSwap", (accounts) => {
     })
   })
 
-  it("contract has tokens", async () => {
-    let balance = await token.balanceOf(ethSwap.address) // Get balance of ethswap contract
-    assert.equal(balance.toString(), tokens("1000000")) // Check if it is equal to tokens sent
+  describe("buyTokens()", async () => {
+    let result
+
+    before(async () => {
+      // Purchase tokens before each example
+      result = await ethSwap.buyTokens({
+        from: investor,
+        value: web3.utils.toWei("1", "ether"),
+      }) // Test Transaction
+    })
+
+    it("Allows user to instantly purchase tokens from EthSwap for a fixed price", async () => {
+      // Check investor recieved tokens after purchase
+      let investorBalance = await token.balanceOf(investor)
+      assert.equal(investorBalance.toString(), tokens("100")) // Check if balance is 100 JUNI tokens
+
+      // Check ethSwap contract balance after token purchase
+      let ethSwapBalance
+      ethSwapBalance = await token.balanceOf(ethSwap.address)
+      assert.equal(ethSwapBalance.toString(), tokens("999900")) // Check if 100 subtracted
+
+      // Check if Ether Balance went up
+      ethSwapBalance = await web3.eth.getBalance(ethSwap.address) // function to check ethereum balance
+      assert.equal(ethSwapBalance.toString(), web3.utils.toWei("1", "Ether"))
+    })
   })
+
+  // it("contract has tokens", async () => {
+  //   let balance = await token.balanceOf(ethSwap.address) // Get balance of ethswap contract
+  //   assert.equal(balance.toString(), tokens("1000000")) // Check if it is equal to tokens sent
+  // })
 })

@@ -40,7 +40,7 @@
 - _You should have chai installed_
 - Run `truffle test` (To run tests)
 
-6. Create Buy Token Functionality (Interact with Token SC from EthSwap SC)
+6. Connect both contracts (Interact with Token SC from EthSwap SC)
 
 - go to contracts/EthSwap.sol
 - Import Token smart contract (at the top of contract)
@@ -49,4 +49,12 @@
 - // 2. Tell current smart contract about where the token contract is located (ADDRESS) (In Constructor)
 - // 3. Token address to deploy that as well (2_deploy_contracts.js)
 - // 4. Update test with token address (EthSwap.test.js)
-- Run test 
+- Run test
+
+7. Create BuyToken Functionality
+- Set Redemption rate
+- Get msg.value and msg.sender
+- Call the transfer function
+- Compile the contract
+- Write the test (that tokens were transferred to address and ether was transfer to us(contract))
+- Write Events
