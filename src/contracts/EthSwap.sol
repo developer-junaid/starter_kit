@@ -37,6 +37,10 @@ contract EthSwap {
         // msg.value = how much amount was sent when this function was called
         uint256 tokenAmount = msg.value * rate; // Transfer (to, amount) * From will be current contract that is EthSwap
 
+        // require(condition) = if condition is true => Run the function else stop executing function and throw error
+        // this = address of the smart contract (EthSwap)
+        require(token.balanceOf(address(this)) >= tokenAmount);
+
         // msg.sender = it will be the recipient calling the function (msg is a global variable and .sender is address of the wallet calling the function)
         token.transfer(msg.sender, tokenAmount);
 

@@ -60,4 +60,6 @@
 - Write the test (that tokens were transferred to address and ether was transfer to us(contract)) (.test.js)
 - Write Events & Emit(.sol)
 - Test the events (.test.js)
+- Require (check that tokens are available in exchange) (.sol)
 
+8. Create Sell Token Functionality
