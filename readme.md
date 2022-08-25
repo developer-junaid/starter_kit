@@ -43,5 +43,10 @@
 6. Create Buy Token Functionality (Interact with Token SC from EthSwap SC)
 
 - go to contracts/EthSwap.sol
-- Import Token smart contract
+- Import Token smart contract (at the top of contract)
 - check code is good: `truffle compile`
+- // 1. Make Token Contract Code Accessible (CODE)
+- // 2. Tell current smart contract about where the token contract is located (ADDRESS) (In Constructor)
+- // 3. Token address to deploy that as well (2_deploy_contracts.js)
+- // 4. Update test with token address (EthSwap.test.js)
+- Run test 

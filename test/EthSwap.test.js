@@ -18,7 +18,7 @@ contract("EthSwap", (accounts) => {
   // Before hook for variables
   before(async () => {
     token = await Token.new()
-    ethSwap = await EthSwap.new()
+    ethSwap = await EthSwap.new(token.address) // 4. Update test with token address
 
     await token.transfer(ethSwap.address, tokens("1000000")) // Transfer tokens from token contract to ethswap contract
   })
