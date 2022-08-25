@@ -14,6 +14,15 @@ contract EthSwap {
     // 1.  Make Token Contract Code Accessible (CODE)
     Token public token; // State variable
 
+    // Event for Token Purchased
+    // Args (account = who purchased tokens & calling the function, token = token address that was purchase, amount = amount of tokens purchased, rate = redemption rate of token)
+    event TokenPurchased(
+        address account,
+        address token,
+        uint256 amount,
+        uint256 rate
+    );
+
     // 2. Tell current smart contract about where the token contract is located (ADDRESS)
     constructor(Token _token) public {
         // Runs only once when contract is deployed to blockchain
@@ -27,7 +36,11 @@ contract EthSwap {
         // tokenAmount = Amount of Ethereum * Redemption Rate
         // msg.value = how much amount was sent when this function was called
         uint256 tokenAmount = msg.value * rate; // Transfer (to, amount) * From will be current contract that is EthSwap
+
         // msg.sender = it will be the recipient calling the function (msg is a global variable and .sender is address of the wallet calling the function)
         token.transfer(msg.sender, tokenAmount);
+
+        // Emit the event
+        emit TokenPurchased(msg.sender, address(token), tokenAmount, rate);
     }
 }

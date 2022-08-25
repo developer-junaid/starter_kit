@@ -52,9 +52,12 @@
 - Run test
 
 7. Create BuyToken Functionality
-- Set Redemption rate
-- Get msg.value and msg.sender
-- Call the transfer function
-- Compile the contract
-- Write the test (that tokens were transferred to address and ether was transfer to us(contract))
-- Write Events
+
+- Set Redemption rate (.sol)
+- Get msg.value and msg.sender (.sol)
+- Call the transfer function (.sol)
+- Compile the contract `truffle compile`
+- Write the test (that tokens were transferred to address and ether was transfer to us(contract)) (.test.js)
+- Write Events & Emit(.sol)
+- Test the events (.test.js)
+

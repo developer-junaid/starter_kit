@@ -63,6 +63,14 @@ contract("EthSwap", ([deployer, investor]) => {
       // Check if Ether Balance went up
       ethSwapBalance = await web3.eth.getBalance(ethSwap.address) // function to check ethereum balance
       assert.equal(ethSwapBalance.toString(), web3.utils.toWei("1", "Ether"))
+
+      // Test Event
+      const event = result.logs[0].args
+
+      assert.equal(event.account, investor)
+      assert.equal(event.token, token.address)
+      assert.equal(event.amount, tokens("100").toString())
+      assert.equal(event.rate.toString(), "100")
     })
   })
 
