@@ -92,3 +92,11 @@
 - - load web3 (get web3 in our app)
 - - load blockchain data (get connected account)
 - - get balance
+
+- Add Identicons
+
+- Buy Tokens Frontend
+- - Get token abi
+- - Get smart contract abi
+- - Load Token
+- - Load EthSwap
