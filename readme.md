@@ -63,3 +63,11 @@
 - Require (check that tokens are available in exchange) (.sol)
 
 8. Create Sell Token Functionality
+
+- Get amount from user (.sol)
+- calculate ether amount (.sol)
+- TransferFrom function to let smart contract spend user's tokens (.sol)
+- TransferFrom must be approved (We will do it from frontend)
+- Create test (.test.js)
+- Write Event & Emit (.sol)
+- Write Event Test (.test.js)

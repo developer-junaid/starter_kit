@@ -16,7 +16,14 @@ contract EthSwap {
 
     // Event for Token Purchased
     // Args (account = who purchased tokens & calling the function, token = token address that was purchase, amount = amount of tokens purchased, rate = redemption rate of token)
-    event TokenPurchased(
+    event TokensPurchased(
+        address account,
+        address token,
+        uint256 amount,
+        uint256 rate
+    );
+
+    event TokensSold(
         address account,
         address token,
         uint256 amount,
@@ -45,6 +52,22 @@ contract EthSwap {
         token.transfer(msg.sender, tokenAmount);
 
         // Emit the event
-        emit TokenPurchased(msg.sender, address(token), tokenAmount, rate);
+        emit TokensPurchased(msg.sender, address(token), tokenAmount, rate);
+    }
+
+    // Sell Tokens
+    function sellTokens(uint256 _amount) public {
+        // Calculate amount of ether
+        uint256 etherAmount = _amount / rate;
+
+        // Require that EthSwap has enough Ether to redeem tokens
+        require(address(this).balance >= etherAmount);
+
+        // msg.sender = person calling function
+        token.transferFrom(msg.sender, address(this), _amount); // Transfer tokens to smart contract
+        msg.sender.transfer(etherAmount); // Send ether to the person calling function (sender)
+
+        // Emit
+        emit TokensSold(msg.sender, address(token), _amount, rate);
     }
 }
