@@ -9,6 +9,7 @@ import TokenContract from "../abis/Token.json"
 
 // Components
 import Navbar from "./Navbar"
+import Main from "./Main"
 
 // Styles
 import "./App.css"
@@ -23,6 +24,7 @@ class App extends Component {
       ethSwap: {},
       ethBalance: "0",
       tokenBalance: "0",
+      loading: true,
     }
   }
 
@@ -73,7 +75,8 @@ class App extends Component {
       window.alert("EthSwap Contract not deployed to detected network.")
     }
 
-    console.log(this.state.ethSwap)
+    // Loading complete
+    this.setState({ loading: false })
   }
 
   // Load Web3
@@ -92,16 +95,24 @@ class App extends Component {
 
   render() {
     console.log(this.state.account)
+    let content
 
+    if (this.state.loading) {
+      content = (
+        <p id="loading" className="text-center">
+          Loading...
+        </p>
+      )
+    } else {
+      content = <Main />
+    }
     return (
       <div>
         <Navbar account={this.state.account} />
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
-              <div className="content mr-auto ml-auto">
-                <h1>Hello World !</h1>
-              </div>
+              <div className="content mr-auto ml-auto">{content}</div>
             </main>
           </div>
         </div>
