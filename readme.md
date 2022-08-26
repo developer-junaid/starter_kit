@@ -71,3 +71,8 @@
 - Create test (.test.js)
 - Write Event & Emit (.sol)
 - Write Event Test (.test.js)
+
+9. Deploy Smart Contract
+
+- `truffle migrate --reset` (deploy to ganache)
+- you will have abis in src/abis
