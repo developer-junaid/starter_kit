@@ -76,3 +76,19 @@
 
 - `truffle migrate --reset` (deploy to ganache)
 - you will have abis in src/abis
+
+10. _Connect Frontend to Blockchain_
+
+- Connect Browser to blockchain (Metamask)
+- - Add Custom RPC (metamask)
+- - Network Name: Ganache
+- - New RPC Url: http://localhost:7545/
+- - Click Save
+- - Click Network and It's selected
+- - Import Account (click private key and paste key of first ganache account)
+
+- Connect App to blockchain
+- - import web3
+- - load web3 (get web3 in our app)
+- - load blockchain data (get connected account)
+- - get balance
