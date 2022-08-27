@@ -39,13 +39,13 @@ class Main extends Component {
             {" "}
             <form
               className="mb-3"
-              // onSubmit={(event) => {
-              //   event.preventDefault()
-              //   let etherAmount
-              //   etherAmount = this.input.value.toString()
-              //   etherAmount = window.web3.utils.toWei(etherAmount, "Ether")
-              //   this.props.buyTokens(etherAmount)
-              // }}
+              onSubmit={(event) => {
+                event.preventDefault()
+                let etherAmount
+                etherAmount = this.input.value.toString() // Get input value ref
+                etherAmount = window.web3.utils.toWei(etherAmount, "Ether") // Convert to wei
+                this.props.buyTokens(etherAmount)
+              }}
             >
               <div>
                 <label className="float-left">

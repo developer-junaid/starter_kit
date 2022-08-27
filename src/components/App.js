@@ -79,6 +79,17 @@ class App extends Component {
     this.setState({ loading: false })
   }
 
+  // Buy Tokens
+  buyTokens = (etherAmount) => {
+    this.setState({ loading: true })
+    this.state.ethSwap.methods
+      .buyTokens()
+      .send({ from: this.state.account, value: etherAmount })
+      .on("transactionHash", (hash) => {
+        this.setState({ loading: false })
+      })
+  }
+
   // Load Web3
   async loadWeb3() {
     if (window.ethereum) {
@@ -104,7 +115,13 @@ class App extends Component {
         </p>
       )
     } else {
-      content = <Main ethBalance={this.state.ethBalance} tokenBalance={this.state.tokenBalance} />
+      content = (
+        <Main
+          ethBalance={this.state.ethBalance}
+          tokenBalance={this.state.tokenBalance}
+          buyTokens={this.buyTokens}
+        />
+      )
     }
     return (
       <div>
