@@ -99,13 +99,13 @@ class Main extends Component {
                 <div className="input-group-append">
                   <div className="input-group-text">
                     <img src={tokenLogo} height="32" alt="" />
-                    &nbsp; DApp
+                    &nbsp; JUNI
                   </div>
                 </div>
               </div>
               <div className="mb-5">
                 <span className="float-left text-muted">Exchange Rate</span>
-                <span className="float-right text-muted">1 ETH = 100 DApp</span>
+                <span className="float-right text-muted">1 ETH = 100 JUNI</span>
               </div>
               <button
                 type="submit"
