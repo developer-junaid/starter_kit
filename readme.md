@@ -100,3 +100,18 @@
 - - Get smart contract abi
 - - Load Token
 - - Load EthSwap
+
+11. Deploy Contract to Alchemy
+
+- Signup to Alchemy
+- create .env and store API_KEY and Your metamast Private key & install `npm i dotenv`
+- Install hardhat `npm i --save-dev hardhat`
+- Create empty hardhat project `npx hardhat` & Select `Create an empty hardhat.config.js` & press `Enter`
+- Install ethers js `npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0"`
+- Add ethers in hardhat config (update according to file)
+- Compile contract `npx hardhat compile`
+
+12. Deployments
+
+- JUNI Token Contract Address: 0xA2fF74a9E679D9d596A274b7de0483034eB36b96
+- EthSwap Contract Address: 0x36268413f0230800355CD4c32d81F60dD211bfF0
